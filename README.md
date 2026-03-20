@@ -496,6 +496,5 @@ This creates an optimized production build in the `dist` folder.
 - Vanilla CSS (no external UI libraries)
 - OMDb API
 
-## 📄 License
 
-MIT
+
