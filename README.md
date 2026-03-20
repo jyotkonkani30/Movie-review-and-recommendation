@@ -423,19 +423,6 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 
 ---
 
-## 🎯 Roadmap
-
-- [ ] Mobile app (React Native)
-- [ ] Advanced search filters
-- [ ] Movie recommendations (ML)
-- [ ] Social features (follow users)
-- [ ] Watch party feature
-- [ ] Discussion boards
-- [ ] Movie trivia game
-- [ ] Export ratings as PDF
-
----
-
 ## 🔄 Version History
 
 ### v1.0.0 (Current)
@@ -447,7 +434,7 @@ This project is licensed under the **MIT License** - see the LICENSE file for de
 
 ---
 
-Made with ❤️ by [Jyot Konkani](https://github.com/jyotkonkani30)
+Made with  by [Jyot Konkani](https://github.com/jyotkonkani30)
 - The `StarRating` component handles the UI interaction and calls `onRate` callback
 - Ratings persist during the session but reset on page refresh (local state only)
 
