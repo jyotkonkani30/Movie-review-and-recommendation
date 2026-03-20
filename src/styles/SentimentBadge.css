@@ -1,0 +1,172 @@
+/* 🧠 SENTIMENT BADGE STYLING */
+/* Displays sentiment with icons and confidence scores */
+
+.sentiment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Badge States */
+.sentiment-badge.sentiment-positive {
+  background: linear-gradient(135deg, #e0f7e0 0%, #f0fff0 100%);
+  color: #2d5a2d;
+  border: 1px solid #90ee90;
+}
+
+.sentiment-badge.sentiment-positive:hover {
+  background: linear-gradient(135deg, #c8e6c8 0%, #e8f8e8 100%);
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+  transform: translateY(-1px);
+}
+
+.sentiment-badge.sentiment-negative {
+  background: linear-gradient(135deg, #ffe0e0 0%, #fff0f0 100%);
+  color: #8b0000;
+  border: 1px solid #ff6b6b;
+}
+
+.sentiment-badge.sentiment-negative:hover {
+  background: linear-gradient(135deg, #ffcccc 0%, #ffe8e8 100%);
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.sentiment-badge.sentiment-neutral {
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3f5f7 100%);
+  color: #37474f;
+  border: 1px solid #90caf9;
+}
+
+.sentiment-badge.sentiment-neutral:hover {
+  background: linear-gradient(135deg, #bbdefb 0%, #eceff1 100%);
+  box-shadow: 0 2px 8px rgba(55, 71, 79, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Icon */
+.sentiment-icon {
+  font-size: 1.1rem;
+  display: inline-block;
+  min-width: 1.2rem;
+}
+
+/* Label */
+.sentiment-label {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* Confidence Score */
+.sentiment-confidence {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-left: 0.2rem;
+  padding: 0.2rem 0.4rem;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+}
+
+/* ============================================================================
+   DARK MODE SUPPORT
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  .sentiment-badge.sentiment-positive {
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+    color: #e8f5e9;
+    border: 1px solid #43a047;
+  }
+
+  .sentiment-badge.sentiment-positive:hover {
+    background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
+    box-shadow: 0 2px 12px rgba(76, 175, 80, 0.3);
+  }
+
+  .sentiment-badge.sentiment-negative {
+    background: linear-gradient(135deg, #b71c1c 0%, #c62828 100%);
+    color: #ffebee;
+    border: 1px solid #e53935;
+  }
+
+  .sentiment-badge.sentiment-negative:hover {
+    background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 100%);
+    box-shadow: 0 2px 12px rgba(244, 67, 54, 0.3);
+  }
+
+  .sentiment-badge.sentiment-neutral {
+    background: linear-gradient(135deg, #263238 0%, #37474f 100%);
+    color: #eceff1;
+    border: 1px solid #546e7a;
+  }
+
+  .sentiment-badge.sentiment-neutral:hover {
+    background: linear-gradient(135deg, #37474f 0%, #455a64 100%);
+    box-shadow: 0 2px 12px rgba(144, 202, 249, 0.3);
+  }
+
+  .sentiment-confidence {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .sentiment-badge {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .sentiment-icon {
+    font-size: 1rem;
+  }
+
+  /* Hide label on mobile, show only icon */
+  @media (max-width: 480px) {
+    .sentiment-label {
+      display: none;
+    }
+
+    .sentiment-badge {
+      padding: 0.3rem 0.4rem;
+    }
+
+    .sentiment-confidence {
+      display: none;
+    }
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .sentiment-badge {
+    border-width: 2px;
+    font-weight: 700;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sentiment-badge {
+    transition: none;
+  }
+
+  .sentiment-badge:hover {
+    transform: none;
+  }
+}

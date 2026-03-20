@@ -1,0 +1,542 @@
+/**
+ * 🎬 CINEVERSE RATING - PREMIUM CINEMATIC DESIGN
+ * A futuristic, glassmorphic rating system
+ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES
+   ============================================ */
+:root {
+  --cineverse-red: #E50914;
+  --cineverse-red-light: #FF2E2E;
+  --cineverse-orange: #FF9F1C;
+  --cineverse-gold: #FFD700;
+  --cineverse-glass: rgba(255, 255, 255, 0.04);
+  --cineverse-glass-border: rgba(255, 255, 255, 0.08);
+  --cineverse-glow: rgba(229, 9, 20, 0.4);
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+/* Subtle shimmer effect */
+@keyframes cineverseShimmer {
+  0%, 100% {
+    background-position: -200% center;
+  }
+  50% {
+    background-position: 200% center;
+  }
+}
+
+/* Neon pulse glow */
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 4px var(--cineverse-red),
+      0 0 8px var(--cineverse-red),
+      0 0 16px rgba(229, 9, 20, 0.4);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow: 
+      0 0 6px var(--cineverse-red-light),
+      0 0 12px var(--cineverse-red),
+      0 0 24px rgba(229, 9, 20, 0.6);
+    filter: brightness(1.1);
+  }
+}
+
+/* Star entrance animation */
+@keyframes starReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-15deg);
+  }
+  60% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Rating value glow pulse */
+@keyframes goldGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  }
+}
+
+/* Container fade in */
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ripple effect on click */
+@keyframes starRipple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 159, 28, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(255, 159, 28, 0);
+  }
+}
+
+/* Floating glow animation */
+@keyframes floatingGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(229, 9, 20, 0.15),
+      inset 0 0 30px rgba(229, 9, 20, 0.03);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(229, 9, 20, 0.25),
+      inset 0 0 40px rgba(229, 9, 20, 0.05);
+  }
+}
+
+/* ============================================
+   GLASSMORPHIC CONTAINER - MOVIE DETAILS
+   ============================================ */
+.cineverse-rating-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  margin: 16px 0;
+  
+  /* Glassmorphism */
+  background: linear-gradient(
+    135deg,
+    rgba(229, 9, 20, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(229, 9, 20, 0.05) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  /* Cinematic border glow */
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  border-radius: 16px;
+  
+  /* Floating glow effect */
+  animation: fadeSlideIn 0.6s ease-out, floatingGlow 4s ease-in-out infinite;
+  
+  /* Inner light reflection */
+  overflow: hidden;
+}
+
+/* Glass reflection overlay */
+.cineverse-rating-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 100%
+  );
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+}
+
+/* Edge glow accent */
+.cineverse-rating-container::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cineverse-red) 50%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+/* ============================================
+   CINEVERSE LABEL - NEON TEXT
+   ============================================ */
+.cineverse-rating-header {
+  display: flex;
+  align-items: center;
+}
+
+.cineverse-label {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  
+  /* Neon red glow effect */
+  color: var(--cineverse-red-light);
+  animation: neonPulse 3s ease-in-out infinite;
+  
+  /* Shimmer overlay */
+  background: linear-gradient(
+    90deg,
+    var(--cineverse-red) 0%,
+    var(--cineverse-red-light) 25%,
+    #fff 50%,
+    var(--cineverse-red-light) 75%,
+    var(--cineverse-red) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cineverseShimmer 6s linear infinite, neonPulse 3s ease-in-out infinite;
+}
+
+.cineverse-rating-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ============================================
+   RATING VALUE - GOLD PREMIUM TEXT
+   ============================================ */
+.global-rating-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.rating-value-large {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.rating-number {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  
+  /* Gold gradient text */
+  background: linear-gradient(
+    135deg,
+    var(--cineverse-gold) 0%,
+    #FFF8DC 30%,
+    var(--cineverse-gold) 50%,
+    var(--cineverse-orange) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Glow effect */
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
+  animation: goldGlow 2s ease-in-out infinite;
+}
+
+.rating-max {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Vote count - Silver muted */
+.vote-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.3px;
+  
+  /* Subtle metallic effect */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   COMPACT MODE - ACTION BAR STARS
+   ============================================ */
+.cineverse-rating-compact {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  
+  /* Premium glass effect */
+  background: linear-gradient(
+    135deg,
+    rgba(229, 9, 20, 0.1) 0%,
+    rgba(255, 159, 28, 0.05) 50%,
+    rgba(229, 9, 20, 0.08) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Glowing border */
+  border: 1px solid rgba(229, 9, 20, 0.25);
+  border-radius: 14px;
+  
+  /* Ambient glow */
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(229, 9, 20, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeSlideIn 0.5s ease-out;
+}
+
+/* Hover state - intensify glow */
+.cineverse-rating-compact:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 9, 20, 0.15) 0%,
+    rgba(255, 159, 28, 0.08) 50%,
+    rgba(229, 9, 20, 0.12) 100%
+  );
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(229, 9, 20, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Top light reflection */
+.cineverse-rating-compact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 159, 28, 0.5) 50%,
+    transparent 100%
+  );
+}
+
+.compact-stars {
+  display: flex;
+  gap: 4px;
+}
+
+/* ============================================
+   STAR BUTTONS - MOLTEN LIGHT DESIGN
+   ============================================ */
+.cineverse-star {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 3px;
+  cursor: default;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: starReveal 0.5s ease-out backwards;
+}
+
+/* Stagger star animations */
+.cineverse-star:nth-child(1) { animation-delay: 0.05s; }
+.cineverse-star:nth-child(2) { animation-delay: 0.1s; }
+.cineverse-star:nth-child(3) { animation-delay: 0.15s; }
+.cineverse-star:nth-child(4) { animation-delay: 0.2s; }
+.cineverse-star:nth-child(5) { animation-delay: 0.25s; }
+
+.cineverse-star.interactive {
+  cursor: pointer;
+}
+
+/* Empty star state */
+.cineverse-star .star-svg {
+  width: 26px;
+  height: 26px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: 
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4))
+    brightness(0.6);
+}
+
+/* Filled star - molten glow */
+.cineverse-star.filled .star-svg {
+  filter: 
+    drop-shadow(0 0 8px rgba(255, 159, 28, 0.6))
+    drop-shadow(0 0 16px rgba(229, 9, 20, 0.4))
+    brightness(1.1);
+}
+
+/* Hover effects */
+.cineverse-star.interactive:hover {
+  transform: scale(1.25) rotate(-5deg);
+}
+
+.cineverse-star.interactive:hover .star-svg {
+  filter: 
+    drop-shadow(0 0 12px rgba(255, 215, 0, 0.8))
+    drop-shadow(0 0 24px rgba(255, 159, 28, 0.6))
+    brightness(1.2);
+}
+
+/* Click ripple effect */
+.cineverse-star.interactive:active {
+  animation: starRipple 0.4s ease-out;
+}
+
+.cineverse-star.interactive:active .star-svg {
+  transform: scale(0.9);
+}
+
+/* ============================================
+   USER RATING BADGE
+   ============================================ */
+.your-rating-badge {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 5px 12px;
+  
+  /* Gold accent */
+  color: var(--cineverse-gold);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.12) 0%,
+    rgba(255, 159, 28, 0.08) 100%
+  );
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 20px;
+  
+  /* Glow */
+  box-shadow: 
+    0 0 12px rgba(255, 215, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.success-flash {
+  color: #4ade80;
+  font-size: 16px;
+  font-weight: bold;
+  filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.6));
+  animation: starRipple 0.5s ease-out;
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.rating-loading {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.loading-spinner-small {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(229, 9, 20, 0.2);
+  border-top-color: var(--cineverse-red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   MOVIE RATINGS SECTION
+   ============================================ */
+.movie-ratings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 16px 0;
+}
+
+/* IMDb Rating - Clean style */
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.imdb-badge {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f5c518;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-shadow: 0 0 8px rgba(245, 197, 24, 0.3);
+}
+
+.rating-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  .cineverse-rating-container {
+    padding: 14px 18px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .cineverse-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  
+  .rating-number {
+    font-size: 24px;
+  }
+  
+  .cineverse-rating-compact {
+    padding: 10px 14px;
+  }
+  
+  .cineverse-star .star-svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cineverse-rating-container {
+    padding: 12px 14px;
+  }
+  
+  .cineverse-star .star-svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .your-rating-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+}

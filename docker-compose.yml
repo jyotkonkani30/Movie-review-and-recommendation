@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # 🧠 Sentiment Analysis Service
+  sentiment-service:
+    build: ./sentiment-service
+    container_name: cineverse-sentiment
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+      HOST: 0.0.0.0
+      DEBUG: "False"
+      LOG_LEVEL: INFO
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  # 🎬 Express Backend
+  backend:
+    build: ./backend
+    container_name: cineverse-backend
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      SENTIMENT_API_URL: http://sentiment-service:8000
+      # Add other required env vars from your .env:
+      # MONGODB_URI: ${MONGODB_URI}
+      # JWT_SECRET: ${JWT_SECRET}
+      # VITE_OMDB_API_KEY: ${VITE_OMDB_API_KEY}
+    depends_on:
+      sentiment-service:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - cineverse-network
+
+  # 🎨 React Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: cineverse-frontend
+    ports:
+      - "80:5173"
+    environment:
+      VITE_API_URL: http://localhost:5000/api
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - cineverse-network
+
+networks:
+  cineverse-network:
+    driver: bridge
+
+# Usage:
+# docker-compose up --build
+#
+# Services will be available at:
+# - Frontend: http://localhost
+# - Backend: http://localhost:5000
+# - Sentiment Service: http://localhost:8000
+# - Sentiment Docs: http://localhost:8000/docs

@@ -1,0 +1,508 @@
+/**
+ * 🎬 COMMUNITY REVIEWS - CINEMATIC GLASSMORPHISM DESIGN
+ * Premium comment section styling
+ */
+
+/* ============================================
+   SECTION CONTAINER
+   ============================================ */
+.comment-section {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   SECTION HEADER
+   ============================================ */
+.comment-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.comment-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  
+  /* Subtle gradient text */
+  background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-icon {
+  font-size: 24px;
+  -webkit-text-fill-color: initial;
+}
+
+.comment-count {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   COMMENT FORM
+   ============================================ */
+.comment-form {
+  margin-bottom: 32px;
+}
+
+.comment-input-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.user-avatar,
+.comment-avatar {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.input-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 16px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #fff;
+  
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  
+  resize: vertical;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+.comment-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: rgba(229, 9, 20, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    0 0 0 3px rgba(229, 9, 20, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.comment-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.textarea-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.char-count {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  
+  background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(229, 9, 20, 0.3);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(229, 9, 20, 0.4);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  font-size: 12px;
+}
+
+.btn-loading {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ============================================
+   LOGIN PROMPT
+   ============================================ */
+.login-prompt-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 9, 20, 0.2);
+  border-radius: 14px;
+}
+
+.login-prompt-box .prompt-icon {
+  font-size: 20px;
+}
+
+.login-prompt-box p {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+.comment-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  
+  font-size: 14px;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 10px;
+}
+
+/* ============================================
+   COMMENTS LIST
+   ============================================ */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================================
+   COMMENT CARD - GLASSMORPHISM
+   ============================================ */
+.comment-card {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  
+  /* Glassmorphism */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  
+  /* Animation */
+  animation: commentFadeIn 0.4s ease-out backwards;
+  transition: all 0.3s ease;
+}
+
+.comment-card:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes commentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comment-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.comment-username {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.comment-time {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.comment-text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  word-wrap: break-word;
+}
+
+/* Delete Button */
+.delete-comment-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.comment-card:hover .delete-comment-btn {
+  opacity: 0.5;
+}
+
+.delete-comment-btn:hover {
+  opacity: 1 !important;
+  background: rgba(255, 107, 107, 0.15);
+}
+
+/* ============================================
+   LOADING SKELETONS
+   ============================================ */
+.comments-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment-skeleton {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skeleton-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-line.short {
+  width: 30%;
+}
+
+.skeleton-line.medium {
+  width: 60%;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.no-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  text-align: center;
+  
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.no-comments .empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.6;
+}
+
+.no-comments p {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.no-comments .empty-subtext {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .comment-section {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+  
+  .comment-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .comment-section-title {
+    font-size: 20px;
+  }
+  
+  .comment-input-wrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .user-avatar {
+    display: none;
+  }
+  
+  .comment-card {
+    padding: 16px;
+  }
+  
+  .comment-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 14px;
+  }
+  
+  .textarea-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .char-count {
+    text-align: right;
+  }
+  
+  .submit-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .comment-section-title {
+    font-size: 18px;
+  }
+  
+  .comment-card {
+    gap: 12px;
+  }
+  
+  .comment-username {
+    font-size: 14px;
+  }
+  
+  .comment-text {
+    font-size: 14px;
+  }
+}
